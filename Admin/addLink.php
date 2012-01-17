@@ -38,68 +38,82 @@ CreationHead("Administraion V-1.0.0.0");
             <tr>
                 <td style="width:45%;">Personnalisation de l'article</td>
                 <td style="text-align:right;width:55%;">
-                    <a href="javascript:document.getElementById('FormArt').submit();" style="border:0;"><img src="IMG/Save.png" style="width: :24px;height:24px;"></a>
-                    <a href="javascript:ParamArtOff();" style="border:0;"><img src="IMG/delete.png" style="width: :24px;height:24px;"></a>
+                    <a href="javascript:document.getElementById('FormArt').submit();" style="border:0;"><img src="IMG/Save.png" style="width:24px;height:24px;"></a>
+                    <a href="javascript:AddLinkOff();" style="border:0;"><img src="IMG/delete.png" style="width:24px;height:24px;"></a>
                 </td>
             </tr>
+            <tr><td colspan="2">&nbsp;</td></tr>
             <tr>
-                <td>Choix de la Page :</td>
-                <td style="text-align: right;">
-                    <select id="page" name="page" style="width:95%;">
-                        <?php
-                        for($i=0;$i<$lp->nbPages;$i++){
-                        ?>
-                        <option value="<?php print $lp->arrayPage[$i]->id_page;?>"><?php print $lp->arrayPage[$i]->title_page;?></option>
-                        <?php
-                        }
-                        ?>
-                    </select>
+                <td colspan="2">
+                    <table cellpadding="0" cellspacing="0" style="width:100%;" id="ListeAdmin">
+                        <thead>
+                            <tr>
+                                <td>&nbsp;Libell&eacute;</td>
+                                <td>&nbsp;Cible du lien</td>
+                                <td>&nbsp;Titre de menu</td>
+                                <td>&nbsp;Position dans le menu</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>&nbsp;<?php AddTextbox('libelle_lien_-1',"",'onchange="MajChamp(this);"');?></td>
+                                <td>&nbsp;<?php AddSelect("action_lien_-1",$Apg,'','onchange="MajChamp(this);"',1,0,1); ?></td>
+                                <td>&nbsp;<?php AddCheckbox('titre_-1','','onchange="MajChamp(this);"');?></td>
+                                <td>&nbsp;<?php AddTextbox('position_','','onchange="MajChamp(this);"');?></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </td>
-            </tr>
-            <tr>
-                <td colspan="2"><textarea id="text_r1" name="text_r1" style="background-color: #ffb"></textarea></td>
             </tr>
         </table>
     </div>
     <img id='patienter_image' src='IMG/fond.png' style='position:absolute;-moz-opacity:0.3;opacity: 0.3;filter:alpha(opacity=30); z-index:1; display:none; '>
-    <table cellpadding="0" cellspacing="0" style="width:100%;" id="ListeAdmin">
-        <thead>
-            <tr>
-                <td>&nbsp;Id_lien</td>
-                <td>&nbsp;Libell&eacute;</td>
-                <td>&nbsp;Cible du lien</td>
-                <td>&nbsp;Fen&ecirc;tre du lien</td>
-                <td>&nbsp;Methode d'envoie de données</td>
-                <td>&nbsp;Titre de menu</td>
-                <td>&nbsp;Position dans le menu</td>
-                <td>&nbsp;Type de lien</td>
-                <td>&nbsp;Page</td>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            for($i=0;$i<$ll->nbLiens;$i++){
-            ?>
-            <tr>
-                <td>&nbsp;<?php print $ll->arrayLiens[$i]->id_lien;?></a></td>
-                <td>&nbsp;<?php AddTextbox('libelle_lien_'.$i,$ll->arrayLiens[$i]->libelle_lien,'onchange="MajChamp(this);"');?></td>
-                <td>&nbsp;<?php AddSelect("action_lien_".$i,$Apg,$ll->arrayLiens[$i]->action_lien,'onchange="MajChamp(this);"',1,0,1); ?></td>
-                <td><?php print $ll->arrayLiens[$i]->target;?></td>
-                <td>&nbsp;<?php print $ll->arrayLiens[$i]->method;?></td>
-                <td>&nbsp;<?php AddCheckbox('titre_'.$i, $ll->arrayLiens[$i]->titre,'onchange="MajChamp(this);"');?></td>
-                <td>&nbsp;<?php AddTextbox('position_'.$i,$ll->arrayLiens[$i]->position,'onchange="MajChamp(this);"');?></td>
-                <td>&nbsp;<?php print $lt->arrayCode[$ll->arrayLiens[$i]->id_type]->libelle_type;?></td>
-                <td>&nbsp;<?php print $ll->arrayLiens[$i]->title_page;?></td>
-            </tr>
-            <?php
-            }
-            ?>
-        </tbody>
-    </table>
+    <table cellpadding="0" cellspacing="0" style="width:100%;">
+        <tr>
+            <td style="width:80%;" class="titre">Liste des Liens</td>
+            <td style="width:20%;text-align:right;"><a href="javascript:AddLink();" style="border:0;"><img src="IMG/Add.png" style="width:24px;height:24px;"></td>
+        </tr>
+        <tr><td colspan="2">&nbsp;</td></tr>
+        <tr>
+            <td colspan="2">
+                <table cellpadding="0" cellspacing="0" style="width:100%;" id="ListeAdmin">
+                    <thead>
+                        <tr>
+                            <td>&nbsp;Id_lien</td>
+                            <td>&nbsp;Libell&eacute;</td>
+                            <td>&nbsp;Cible du lien</td>
+                            <td>&nbsp;Fen&ecirc;tre du lien</td>
+                            <td>&nbsp;Methode d'envoie de données</td>
+                            <td>&nbsp;Titre de menu</td>
+                            <td>&nbsp;Position dans le menu</td>
+                            <td>&nbsp;Type de lien</td>
+                            <td>&nbsp;Page</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        for($i=0;$i<$ll->nbLiens;$i++){
+                        ?>
+                        <tr>
+                            <td>&nbsp;<?php print $ll->arrayLiens[$i]->id_lien;?></a></td>
+                            <td>&nbsp;<?php AddTextbox('libelle_lien_'.$i,$ll->arrayLiens[$i]->libelle_lien,'onchange="MajChamp(this);"');?></td>
+                            <td>&nbsp;<?php AddSelect("action_lien_".$i,$Apg,$ll->arrayLiens[$i]->action_lien,'onchange="MajChamp(this);"',1,0,1); ?></td>
+                            <td><?php print $ll->arrayLiens[$i]->target;?></td>
+                            <td>&nbsp;<?php print $ll->arrayLiens[$i]->method;?></td>
+                            <td>&nbsp;<?php AddCheckbox('titre_'.$i, $ll->arrayLiens[$i]->titre,'onchange="MajChamp(this);"');?></td>
+                            <td>&nbsp;<?php AddTextbox('position_'.$i,$ll->arrayLiens[$i]->position,'onchange="MajChamp(this);"');?></td>
+                            <td>&nbsp;<?php print $lt->arrayCode[$ll->arrayLiens[$i]->id_type]->libelle_type;?></td>
+                            <td>&nbsp;<?php print $ll->arrayLiens[$i]->title_page;?></td>
+                        </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </td>
+        </tr>                
+    </table>    
 </form>
 <?php
 FinBody();
 ?>
-<script>
-print_a(document.getElementById('ListeAdmin'));
-</script>

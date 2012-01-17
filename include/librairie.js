@@ -15,6 +15,16 @@ function ParamArtOff(){
     document.getElementById("enreg").value=0;
     Calc_Off();
 }
+function AddLink(){
+    Calc_On();
+    document.getElementById("DivTool").style.display="";
+    document.getElementById("enreg").value=1;
+}
+function AddLinkOff(){
+    Calc_Off();
+    document.getElementById("DivTool").style.display="none";
+    document.getElementById("enreg").value=0;
+}
 function Calc_On() {
     document.getElementById('patienter_image').style.top = 0;
     document.getElementById('patienter_image').style.left = 0;

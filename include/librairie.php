@@ -179,7 +179,7 @@ function ScanDirectory($directory){
 }
 function GetCss(){
     ?>
-    <LINK rel="stylesheet" type="text/css" href="../CSS/standard.css">
+    <LINK rel="stylesheet" type="text/css" href="../CSS/standard/standard.css">
     <?php
 }
 function php2js( $php_array, $js_array_name ) {

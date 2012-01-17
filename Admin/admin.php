@@ -3,11 +3,8 @@ include_once '../include/librairie.php';
 $pass=sha1(RecupVarForm('pwd'));
 $user=RecupVarForm('user');
 VerifConnexion($user,$pass);
+CreationHead("Administraion V-1.0.0.0");
 ?>
-<head>
-    <title>Administration V 1.0.0.0</title>
-    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
-</head>
 <table cellpading="0" cellspacing="0" style="width:100%;" id="Bloc">
     <tr>
         <td class="titre" style="width: 100%;">Administration</td>
