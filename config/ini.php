@@ -1,0 +1,9 @@
+<?php
+$GS_db="MYSQL";
+$GS_user="root";
+$GS_pwd="Rugby13";
+$GS_pwd="";
+$GS_dsn="localhost";
+$GS_debug="1";
+$GS_database="rbclub";
+?>
