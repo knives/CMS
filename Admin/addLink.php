@@ -8,21 +8,27 @@ include_once '../classes/Type.php';
 include_once '../classes/ListeType.php';
 VerifConnexion();
 $enreg = RecupVarForm('enreg');
-$id_article = RecupVarForm('id_art');
-$memo = RecupVarForm('text_r1');
-$page = RecupVarForm('page');
-if($enreg==1 && $id_article!=""){
-    $art = new Article();
-    $art->id_article=$id_article;
-    $art->memo = $memo;
-    $art->id_page = $page;
-    $art->MajArticle();
+$nb_link = RecupVarForm("nb_link");
+if($enreg==1){
+    for($i=-1;$i<$nb_link;$i++){
+        $link = new Liens();
+        $link->libelle_lien=RecupVarForm("libelle_lien_".$i);
+        $link->action_lien=RecupVarForm("action_lien_".$i);
+        $link->titre=RecupVarForm("titre_".$i,0);
+        $link->position=RecupVarForm("position_".$i);
+        if($i==-1 && $link->libelle_lien!='' && $link->action_lien!='' && $link->position!=''){
+            $link->AddLink();
+        } else if($i>-1){
+            $link->id_lien = RecupVarForm("id_lien_".$i);
+            $link->MajLink();
+        }
+    }
 }
+$ll= new ListeLiens();
+$ll->GetListeLiens();
 $lp = new ListePages();
 $lp->GetListePages(0);
 $Apg = $lp->MakeArray(0,'title_page','nom_fichier');
-$ll= new ListeLiens();
-$ll->GetListeLiens();
 $lt=new ListeType();
 $lt->GetListeType();
 CreationHead("Administraion V-1.0.0.0");
@@ -30,15 +36,15 @@ CreationHead("Administraion V-1.0.0.0");
 
     <form id="FormArt" name="FormArt" method="POST" >
         <?php
-        AddHidden('id_art');
         AddHidden('enreg',0);
+        AddHidden('nb_link',$ll->nbLiens);
         ?>
     <div style="display:none;z-index: 2;position: absolute;" id="DivTool">
         <table>
             <tr>
-                <td style="width:45%;">Personnalisation de l'article</td>
-                <td style="text-align:right;width:55%;">
-                    <a href="javascript:document.getElementById('FormArt').submit();" style="border:0;"><img src="IMG/Save.png" style="width:24px;height:24px;"></a>
+                <td style="width:80%;" class="titre">Ajouter un lien</td>
+                <td style="text-align:right;width:20%;">
+                    <a href="javascript:document.getElementById('enreg').value=1;document.getElementById('FormArt').submit();" style="border:0;"><img src="IMG/Save.png" style="width:24px;height:24px;"></a>
                     <a href="javascript:AddLinkOff();" style="border:0;"><img src="IMG/delete.png" style="width:24px;height:24px;"></a>
                 </td>
             </tr>
@@ -59,7 +65,7 @@ CreationHead("Administraion V-1.0.0.0");
                                 <td>&nbsp;<?php AddTextbox('libelle_lien_-1',"",'onchange="MajChamp(this);"');?></td>
                                 <td>&nbsp;<?php AddSelect("action_lien_-1",$Apg,'','onchange="MajChamp(this);"',1,0,1); ?></td>
                                 <td>&nbsp;<?php AddCheckbox('titre_-1','','onchange="MajChamp(this);"');?></td>
-                                <td>&nbsp;<?php AddTextbox('position_','','onchange="MajChamp(this);"');?></td>
+                                <td>&nbsp;<?php AddTextbox('position_-1','','onchange="MajChamp(this);"');?></td>
                             </tr>
                         </tbody>
                     </table>
@@ -71,7 +77,7 @@ CreationHead("Administraion V-1.0.0.0");
     <table cellpadding="0" cellspacing="0" style="width:100%;">
         <tr>
             <td style="width:80%;" class="titre">Liste des Liens</td>
-            <td style="width:20%;text-align:right;"><a href="javascript:AddLink();" style="border:0;"><img src="IMG/Add.png" style="width:24px;height:24px;"></td>
+            <td style="width:20%;text-align:right;"><a href="javascript:ParamArt();" style="border:0;"><img src="IMG/Add.png" style="width:24px;height:24px;"></td>
         </tr>
         <tr><td colspan="2">&nbsp;</td></tr>
         <tr>
@@ -95,7 +101,7 @@ CreationHead("Administraion V-1.0.0.0");
                         for($i=0;$i<$ll->nbLiens;$i++){
                         ?>
                         <tr>
-                            <td>&nbsp;<?php print $ll->arrayLiens[$i]->id_lien;?></a></td>
+                            <td>&nbsp;<?php AddHidden('id_lien_'.$i,$ll->arrayLiens[$i]->id_lien);print $ll->arrayLiens[$i]->id_lien;?></a></td>
                             <td>&nbsp;<?php AddTextbox('libelle_lien_'.$i,$ll->arrayLiens[$i]->libelle_lien,'onchange="MajChamp(this);"');?></td>
                             <td>&nbsp;<?php AddSelect("action_lien_".$i,$Apg,$ll->arrayLiens[$i]->action_lien,'onchange="MajChamp(this);"',1,0,1); ?></td>
                             <td><?php print $ll->arrayLiens[$i]->target;?></td>

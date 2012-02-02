@@ -20,13 +20,8 @@ $lp = new ListePages();
 $lp->GetListePages(4);
 $la= new ListeArticle();
 $la->GetListeArticle();
+CreationHead("Administraion V-1.0.0.0");
 ?>
-<head>
-    <title>Administration V 1.0.0.0</title>
-    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
-    <script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
-    <script type="text/javascript" src="../include/librairie.js?v=<?php print filemtime('../include/librairie.js');?>"></script>  
-</head>
 <body>
     <form id="FormArt" name="FormArt" method="POST" >
         <?php
@@ -36,8 +31,8 @@ $la->GetListeArticle();
     <div style="display:none;z-index: 2;position: absolute;" id="DivTool">
         <table>
             <tr>
-                <td style="width:45%;">Personnalisation de l'article</td>
-                <td style="text-align:right;width:55%;">
+                <td style="width:80%;" class="titre">Personnalisation de l'article</td>
+                <td style="text-align:right;width:20%;">
                     <a href="javascript:document.getElementById('FormArt').submit();" style="border:0;"><img src="IMG/Save.png" style="width: :24px;height:24px;"></a>
                     <a href="javascript:ParamArtOff();" style="border:0;"><img src="IMG/delete.png" style="width: :24px;height:24px;"></a>
                 </td>
@@ -62,27 +57,38 @@ $la->GetListeArticle();
         </table>
     </div>
     <img id='patienter_image' src='IMG/fond.png' style='position:absolute;-moz-opacity:0.3;opacity: 0.3;filter:alpha(opacity=30); z-index:1; display:none; '>
-    <table cellpadding="0" cellspacing="0" style="width:100%;" id="ListeAdmin">
-        <thead>
-            <tr>
-                <td>&nbsp;Id_article</td>
-                <td>&nbsp;Page</td>
-                <td>&nbsp;Article</td>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            for($i=0;$i<$la->nb_article;$i++){
-            ?>
-            <tr>
-                <td>&nbsp;<a href="javascript:ParamArt('<?php print $la->liste_article[$i]->id_article;?>');"><?php print $la->liste_article[$i]->id_article;?></a></td>
-                <td>&nbsp;<?php print $la->liste_article[$i]->title_page;?></td>
-                <td>&nbsp;<span id="<?php  print $la->liste_article[$i]->id_article;?>"><?php print $la->liste_article[$i]->memo;?></span></td>
-            </tr>
-            <?php
-            }
-            ?>
-        </tbody>
+    <table cellpadding="0" cellspacing="0" style="width:100%;">
+        <tr>
+            <td style="width:80%;" class="titre">Liste des Articles</td>
+            <td style="width:20%;text-align:right;"><a href="javascript:ParamArt(-1);" style="border:0;"><img src="IMG/Add.png" style="width:24px;height:24px;"></td>
+        </tr>
+        <tr><td colspan="2">&nbsp;</td></tr>
+        <tr>
+            <td colspan="2">
+                <table cellpadding="0" cellspacing="0" style="width:100%;" id="ListeAdmin">
+                    <thead>
+                        <tr>
+                            <td>&nbsp;Id_article</td>
+                            <td>&nbsp;Page</td>
+                            <td>&nbsp;Article</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        for($i=0;$i<$la->nb_article;$i++){
+                        ?>
+                        <tr>
+                            <td>&nbsp;<a href="javascript:ParamArt('<?php print $la->liste_article[$i]->id_article;?>');"><?php print $la->liste_article[$i]->id_article;?></a></td>
+                            <td>&nbsp;<?php print $la->liste_article[$i]->title_page;?></td>
+                            <td>&nbsp;<span id="<?php  print $la->liste_article[$i]->id_article;?>"><?php print $la->liste_article[$i]->memo;?></span></td>
+                        </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
     </table>
 </form>
 </body>

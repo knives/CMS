@@ -19,13 +19,21 @@ include_once dirname(__FILE__).'/version.php';
 include_once dirname(__FILE__).'/lib_debug.php';
 MajVersion();
 
-function RecupVarForm($name){
+function RecupVarForm($name,$def=''){
     if (isset($_POST[$name])){
-        return $_POST[$name];
+        if($_POST[$name]!=''){
+            return $_POST[$name];
+        } else {
+            return $def;
+        }
     } else if (isset($_GET[$name])){
-        return $_GET[$name];        
+        if($_GET[$name]!=''){
+            return $_GET[$name];        
+        } else {
+            return $def;
+        }
     } else {
-        return '';
+        return $def;
     }
 }
 function VerifConnexion($user="",$pass=""){

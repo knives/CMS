@@ -1,5 +1,7 @@
 <?php
-    $Article = new Article();
-    $Article = $DATA->position[1];
-    print $Article->memo;
+    foreach($DATA->position[1] as $key => $value) {
+        $Article = new Article();
+        $Article = $value;
+        print $Article->memo;
+    }
 ?>

@@ -38,10 +38,13 @@ class Data{
                 //Article
                 $sql = "select memo,id_article from article a where id_page = ".$id_page;
                 $Ls_rs2 = F_executer_requete($LO_conn,$sql);
-                F_recuperer_ligne($Ls_rs2);
-                $this->position[$index] = new Article();
-                $this->position[$index]->memo = F_retourne_resultat($Ls_rs2,'memo');
-                $this->position[$index]->id_article = F_retourne_resultat($Ls_rs2,'id_article');
+                $i=0;
+                while(F_recuperer_ligne($Ls_rs2)){
+                    $this->position[$index][$i] = new Article();
+                    $this->position[$index][$i]->memo = F_retourne_resultat($Ls_rs2,'memo');
+                    $this->position[$index][$i]->id_article = F_retourne_resultat($Ls_rs2,'id_article');
+                    $i++;
+                }
             break;
         }
         F_close_connexion($LO_conn);

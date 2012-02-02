@@ -4,7 +4,9 @@ function ParamArt(id_article){
     document.getElementById("id_art").value=id_article;
     document.getElementById("enreg").value=1;
     editor.destroy();
-    document.getElementById("text_r1").value=document.getElementById(id_article).innerHTML;
+    if(id_article!=-1){
+        document.getElementById("text_r1").value=document.getElementById(id_article).innerHTML;
+    }
     editor = CKEDITOR.replace( 'text_r1',{
         filebrowserBrowseUrl : 'filemanager/index.html'        
     });
@@ -18,7 +20,6 @@ function ParamArtOff(){
 function AddLink(){
     Calc_On();
     document.getElementById("DivTool").style.display="";
-    document.getElementById("enreg").value=1;
 }
 function AddLinkOff(){
     Calc_Off();
