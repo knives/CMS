@@ -1,0 +1,17 @@
+.titre{
+    background-image: url('../../Admin/IMG/bg_b.png');
+    height:33px;
+    font-weight:bold;
+}
+#ListeAdmin thead{
+    background-image: url('../../Admin/IMG/bg_y.png');
+    height:33px;
+    font-weight:bold;    
+}
+table #ListeAdmin {
+    border:1px solid #000000;
+}
+#DivTool{
+    background-color: #FFFFFF;
+    width:auto;
+}
