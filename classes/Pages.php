@@ -30,5 +30,29 @@ class Pages {
             }
             F_close_connexion($LO_conn);
         }
+        
+        function SetPage(){
+            if ($this->id_type==0){
+                $type='DATA';
+            } else if ($this->id_type==1){
+                $type='MENU';
+            } else if ($this->id_type==4){
+                $type='ART';
+            }
+            SETTPL($type, $this->nom_fichier);
+            $LO_conn = F_creer_connexion();
+            if($this->id_page==-1){
+                $sql="select max(id_page)+1 as nb from page ";
+                $Ls_rs = F_executer_requete($LO_conn, $sql);
+                F_recuperer_ligne($Ls_rs);
+                $this->id_page=F_retourne_resultat($Ls_rs, "nb");
+            } else {
+                $sql = "delete from page where id_page = ".$this->id_page;
+                $Ls_rs = F_executer_requete($LO_conn, $sql);
+            }
+            $sql = "insert into page (id_page ,title_page,nom_fichier,id_type) values (".$this->id_page.",'".$this->title_page."','".$this->nom_fichier."',".$this->id_type.")";
+            $Ls_rs = F_executer_requete($LO_conn, $sql);
+            F_close_connexion($LO_conn);
+        }
 }
 ?>

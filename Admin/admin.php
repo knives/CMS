@@ -21,9 +21,9 @@ CreationHead("Administraion V-1.0.0.0");
                             <tr>
                                 <td><a title="Gestion des Pages" href="addPage.php" target="BodyF">Gestion des Pages</a></td>
                             </tr>
-                            <tr>
+                           <!-- <tr>
                                 <td><a title="Gestion des Formulaires" href="addForm.php" target="BodyF">Gestion des Formulaires</a></td>
-                            </tr>
+                            </tr>-->
                             <tr>
                                 <td><a title="Gestion des Liens" href="addLink.php" target="BodyF">Gestion des Liens</a></td>
                             </tr>

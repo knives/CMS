@@ -242,5 +242,18 @@ function Obj2Array($TabObj,$auto,$valeur,$cle='',$each=""){
     }
     return $array;
 }
-
+function SETTPL($type,$new_name){
+    $a = fopen('TPL/'.$type.'.tpl.php', 'r+');
+    $s='';
+    while(!feof($a)) {
+        $s .= fgets($a);
+    }
+    if($type=='DATA'){
+        $s = str_replace('@PAGE_NAME@', $new_name, $s);
+    }
+    fclose($a);
+    $a=fopen('../pages/'.$new_name, 'w+');
+    fwrite($a, $s);
+    fclose($a);
+}
 ?>
