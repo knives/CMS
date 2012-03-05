@@ -77,7 +77,10 @@ CreationHead("Administraion V-1.0.0.0");
     <table cellpadding="0" cellspacing="0" style="width:100%;">
         <tr>
             <td style="width:80%;" class="titre">Liste des Liens</td>
-            <td style="width:20%;text-align:right;"><a href="javascript:ParamArt();" style="border:0;"><img src="IMG/Add.png" style="width:24px;height:24px;"></td>
+            <td style="width:20%;text-align:right;">
+                <a href="javascript:document.getElementById('enreg').value=1;document.getElementById('FormArt').submit();" style="border:0;"><img src="IMG/Save.png" style="width:24px;height:24px;"></a>
+                <a href="javascript:ParamArt();" style="border:0;"><img src="IMG/Add.png" style="width:24px;height:24px;">
+            </td>
         </tr>
         <tr><td colspan="2">&nbsp;</td></tr>
         <tr>

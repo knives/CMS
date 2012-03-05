@@ -218,4 +218,29 @@ function php2js( $php_array, $js_array_name ) {
 	}
 	return $script_js;
 }
+function Obj2Array($TabObj,$auto,$valeur,$cle='',$each=""){
+    $array = array();
+    if($auto==0 && $cle==''){
+        return $array;
+    }
+    if($each==1){
+        foreach($TabObj as $key => $val){
+            if($auto==1){
+                $array[$key]=$TabObj[$key]->$valeur;
+            } else {
+                $array[$TabObj[$key]->$cle]=$TabObj[$key]->$valeur;
+            }
+        }
+    } else {
+        for($i=0;$i<count($TabObj);$i++){
+            if($auto==1){
+                $array[$i]=$TabObj[$i]->$valeur;
+            } else {
+                $array[$TabObj[$i]->$cle]=$TabObj[$i]->$valeur;
+            }
+        }
+    }
+    return $array;
+}
+
 ?>

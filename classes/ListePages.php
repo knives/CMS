@@ -8,10 +8,10 @@ class ListePages {
     function GetListePages($type=''){
         $LO_conn = F_creer_connexion();
         $where_type="";
-        if($type!=''){
-            $where_type = " where id_type = ".$type;
+        if($type!==''){
+            $where_type = " where p.id_type = ".$type;
         }
-        $sql="select id_page,title_page,nom_fichier, id_type from page ".$where_type;
+        $sql="select p.id_page,p.title_page,p.nom_fichier, p.id_type from page p ".$where_type;
         $Ls_rs = F_executer_requete($LO_conn, $sql);
         while(F_recuperer_ligne($Ls_rs)){
             $this->arrayPage[$this->nbPages]= new Pages();
@@ -19,6 +19,7 @@ class ListePages {
             $pages->id_page = F_retourne_resultat($Ls_rs,'id_page');
             $pages->title_page = F_retourne_resultat($Ls_rs,'title_page');
             $pages->nom_fichier = F_retourne_resultat($Ls_rs,'nom_fichier');
+            $pages->id_type = F_retourne_resultat($Ls_rs,'id_type');
             $pages->id_type = F_retourne_resultat($Ls_rs,'id_type');
             $this->nbPages++;
         }

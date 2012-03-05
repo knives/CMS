@@ -1,8 +1,8 @@
 <?php
-include_once ('classes/Data.php');
-include_once ('classes/liens.php');
-include_once ('classes/ListeLiens.php');
-include_once ('classes/Article.php');
+include_once (dirname(__FILE__).'/../classes/Data.php');
+include_once (dirname(__FILE__).'/../classes/liens.php');
+include_once (dirname(__FILE__).'/../classes/ListeLiens.php');
+include_once (dirname(__FILE__).'/../classes/Article.php');
 $DATA =new Data();
 $DATA->ChargeMenu();
 print_a($Page,0,1);
@@ -26,7 +26,7 @@ if(!isset($Page)){
                 <tr>
                     <td>
                         <?php
-                        require_once "pages/".$Page->position[0]['name'];
+                        require_once $Page->position[0]['name'];
                         ?>
                     </td>
                 </tr>
@@ -34,7 +34,7 @@ if(!isset($Page)){
         </td>
         <td>
             <?php
-            require_once "pages/".$Page->position[1]['name'];
+            require_once $Page->position[1]['name'];
             ?>
         </td>
     </tr>

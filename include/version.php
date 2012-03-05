@@ -119,8 +119,6 @@ function M1000(){
     $sql="insert into template (id_template,nom_template,nom_fichier) values (0,'Standard','standard.php')";
     F_executer_requete($LO_conn,$sql);
 
-    $sql="insert into template (id_template,nom_template,nom_fichier) values (0,'Standard','standard.php')";
-    F_executer_requete($LO_conn,$sql);
 
     $sql="insert into template_page (id_page,id_template,position,main_page) values (1,0,0,0)";
     F_executer_requete($LO_conn,$sql);
