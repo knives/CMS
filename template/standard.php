@@ -20,7 +20,7 @@ if(!isset($Page)){
         <td colspan="2" style="width:100%;">&nbsp;</td>
     </tr>
     <tr>
-        <td>
+        <td valign="top">
             <table cellpadding="0" cellspacing="0" class="menu">
                 <tr>
                     <td>
@@ -31,7 +31,7 @@ if(!isset($Page)){
                 </tr>
             </table>
         </td>
-        <td>
+        <td valign="top">
             <?php
             require_once $Page->position[1]['name'];
             ?>
