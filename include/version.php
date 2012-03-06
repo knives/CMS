@@ -153,6 +153,12 @@ function M1000(){
     $sql = "update versi set version = '1.0.0.0' ";
     F_executer_requete($LO_conn,$sql);
     
+    $sql = "create table css (id_css int , nom_css varchar(20) ,active int)";
+    F_executer_requete($LO_conn,$sql);
+	
+	$sql="insert into css (id_css,nom_css,active) values (0,'standard',1)";
+    F_executer_requete($LO_conn,$sql);
+    
     F_close_connexion($LO_conn);
 }
 ?>

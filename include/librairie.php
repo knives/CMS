@@ -152,6 +152,13 @@ function GetArrayTarget(){
     return $a;
 }
 function CreationHead($title=""){
+	global $css_name;
+	$LO_conn = F_creer_connexion();
+	$sql = "select nom_css from css where active = 1";
+	$Ls_rs = F_executer_requete($LO_conn,$sql);
+	F_recuperer_ligne($Ls_rs);
+	$css_name = F_retourne_resultat($Ls_rs,'nom_css');
+	F_close_connexion($LO_conn);
     ?>
     <head>
         <title><?php print $title;?></title>
@@ -186,8 +193,9 @@ function ScanDirectory($directory){
     return $ListF;
 }
 function GetCss(){
+	global $css_name;
     ?>
-    <LINK rel="stylesheet" type="text/css" href="../CSS/standard/standard.css">
+    <LINK rel="stylesheet" type="text/css" href="../CSS/<?php print $css_name;?>/<?php print $css_name;?>.css">
     <?php
 }
 function php2js( $php_array, $js_array_name ) {

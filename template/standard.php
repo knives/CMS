@@ -17,7 +17,7 @@ if(!isset($Page)){
 ?>
 <table cellpadding="0" cellspacing="0" class="standard">
     <tr>
-        <td colspan="2" style="width:100%;">&nbsp;</td>
+        <td colspan="2" style="width:100%;"><?php require_once '../CSS/'.$css_name.'/banniere.php'?></td>
     </tr>
     <tr>
         <td valign="top">
