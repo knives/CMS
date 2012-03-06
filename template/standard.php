@@ -5,7 +5,6 @@ include_once (dirname(__FILE__).'/../classes/ListeLiens.php');
 include_once (dirname(__FILE__).'/../classes/Article.php');
 $DATA =new Data();
 $DATA->ChargeMenu();
-print_a($Page,0,1);
 if(!isset($Page)){
     $DATA->position[0] ='';
     $DATA->position[1] ='';
