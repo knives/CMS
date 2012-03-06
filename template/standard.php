@@ -20,8 +20,8 @@ if(!isset($Page)){
         <td colspan="2" style="width:100%;"><?php require_once '../CSS/'.$css_name.'/banniere.php'?></td>
     </tr>
     <tr>
-        <td valign="top">
-            <table cellpadding="0" cellspacing="0" class="menu">
+        <td valign="top" class="menu">
+            <table cellpadding="0" cellspacing="0" width="100%">
                 <tr>
                     <td>
                         <?php
@@ -31,7 +31,7 @@ if(!isset($Page)){
                 </tr>
             </table>
         </td>
-        <td valign="top">
+        <td valign="top" class="page">
             <?php
             require_once $Page->position[1]['name'];
             ?>

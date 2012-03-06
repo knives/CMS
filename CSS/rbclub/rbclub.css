@@ -1,0 +1,14 @@
+body {
+	background-color:red;
+}
+.standard{
+	background-color:#FFFFFF;
+	border-left:2px #000000 solid;
+	border-right:2px #000000 solid;
+	width:86%;
+    margin-left:7%;
+}
+
+.menu{
+    width:20%;
+}
