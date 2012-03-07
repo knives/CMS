@@ -1,5 +1,5 @@
 body {
-	background-color:red;
+	background-color:#A21906;
 }
 .standard{
 	background-color:#FFFFFF;
@@ -7,8 +7,24 @@ body {
 	border-right:2px #000000 solid;
 	width:86%;
     margin-left:7%;
+    box-shadow: #000000 0px 0px 15px 5px;
+    -webkit-box-shadow: #000000 0px 0px 15px 5px;
+    -moz-box-shadow: #000000 0px 0px 15px 5px;
+    border-radius: 0px 30px 0px 30px;
+    -moz-border-radius: 0px 30px 0px 30px;
+    -webkit-border-radius: 0px 30px 0px 30px;
+    padding:10px;
 }
 
 .menu{
     width:20%;
+}
+.menu .titre{
+    color:#000000;
+    background-color:#FFFFFF;
+    font-weight: normal;
+    text-shadow:2px 4px 0px #A21906;
+    font-size: 30px;
+    text-transform: uppercase;
+    font-family: Impact; 
 }
