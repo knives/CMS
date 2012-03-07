@@ -62,8 +62,11 @@ class Pages {
 				F_executer_requete($LO_conn, $sql);
             } else if ($this->id_type==1){
                 $type='MENU';
+				$sql = "update template_page set main_page=".$this->main_page.",position=(select position from template_position where id_type=1) where id_page=".$this->id_page;
+				F_executer_requete($LO_conn, $sql);
             } else if ($this->id_type==4){
                 $type='ART';
+				$sql = "update template_page set main_page=".$this->main_page.",position=(select position from template_position where id_type=4) where id_page=".$this->id_page;
             }
             SETTPL($type, $this->nom_fichier);			
 			
