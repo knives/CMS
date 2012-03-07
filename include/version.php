@@ -164,6 +164,27 @@ function M1000(){
 	
 	$sql="update template set active=1";
 	F_executer_requete($LO_conn,$sql);
+
+	$sql="create table template_position (id_template int,id_type int,position int)";
+	F_executer_requete($LO_conn,$sql);
+	
+	$sql="insert into template_position (id_template,id_type,position) values (0,4,1)";
+	F_executer_requete($LO_conn,$sql);
+	
+	$sql="insert into template_position (id_template,id_type,position) values (0,1,0)";
+	F_executer_requete($LO_conn,$sql);
+	
+	$sql="insert into template_position (id_template,id_type,position) values (0,2,1)";
+	F_executer_requete($LO_conn,$sql);
+	
+	$sql="insert into template_position (id_template,id_type,position) values (0,3,1)";
+	F_executer_requete($LO_conn,$sql);
+	
+	$sql="alter table page add main_page int";
+	F_executer_requete($LO_conn,$sql);
+	
+	$sql="update page set main_page = 0 where id_type!=0";
+	F_executer_requete($LO_conn,$sql);
 	
     F_close_connexion($LO_conn);
 }

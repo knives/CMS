@@ -4,6 +4,7 @@ class Article{
 	var $id_page;
 	var $memo;
     var $title_page;
+	var $main_page;
 	function Article(){
 	}
     

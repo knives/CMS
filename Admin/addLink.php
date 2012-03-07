@@ -62,10 +62,10 @@ CreationHead("Administraion V-1.0.0.0");
                         </thead>
                         <tbody>
                             <tr>
-                                <td>&nbsp;<?php AddTextbox('libelle_lien_-1',"",'onchange="MajChamp(this);"');?></td>
-                                <td>&nbsp;<?php AddSelect("action_lien_-1",$Apg,'','onchange="MajChamp(this);"',1,0,1); ?></td>
-                                <td>&nbsp;<?php AddCheckbox('titre_-1','','onchange="MajChamp(this);"');?></td>
-                                <td>&nbsp;<?php AddTextbox('position_-1','','onchange="MajChamp(this);"');?></td>
+                                <td><?php AddTextbox('libelle_lien_-1',"",'onchange="MajChamp(this);"');?></td>
+                                <td><?php AddSelect("action_lien_-1",$Apg,'','onchange="MajChamp(this);"',1,0,1); ?></td>
+                                <td><?php AddCheckbox('titre_-1','','onchange="MajChamp(this);"');?></td>
+                                <td><?php AddTextbox('position_-1','','onchange="MajChamp(this);"');?></td>
                             </tr>
                         </tbody>
                     </table>
@@ -105,12 +105,12 @@ CreationHead("Administraion V-1.0.0.0");
                         ?>
                         <tr>
                             <td>&nbsp;<?php AddHidden('id_lien_'.$i,$ll->arrayLiens[$i]->id_lien);print $ll->arrayLiens[$i]->id_lien;?></a></td>
-                            <td>&nbsp;<?php AddTextbox('libelle_lien_'.$i,$ll->arrayLiens[$i]->libelle_lien,'onchange="MajChamp(this);"');?></td>
-                            <td>&nbsp;<?php AddSelect("action_lien_".$i,$Apg,$ll->arrayLiens[$i]->action_lien,'onchange="MajChamp(this);"',1,0,1); ?></td>
+                            <td><?php AddTextbox('libelle_lien_'.$i,$ll->arrayLiens[$i]->libelle_lien,'onchange="MajChamp(this);"');?></td>
+                            <td><?php AddSelect("action_lien_".$i,$Apg,$ll->arrayLiens[$i]->action_lien,'onchange="MajChamp(this);"',1,0,1); ?></td>
                             <td><?php print $ll->arrayLiens[$i]->target;?></td>
                             <td>&nbsp;<?php print $ll->arrayLiens[$i]->method;?></td>
-                            <td>&nbsp;<?php AddCheckbox('titre_'.$i, $ll->arrayLiens[$i]->titre,'onchange="MajChamp(this);"');?></td>
-                            <td>&nbsp;<?php AddTextbox('position_'.$i,$ll->arrayLiens[$i]->position,'onchange="MajChamp(this);"');?></td>
+                            <td><?php AddCheckbox('titre_'.$i, $ll->arrayLiens[$i]->titre,'onchange="MajChamp(this);"');?></td>
+                            <td><?php AddTextbox('position_'.$i,$ll->arrayLiens[$i]->position,'onchange="MajChamp(this);"');?></td>
                             <td>&nbsp;<?php print $lt->arrayCode[$ll->arrayLiens[$i]->id_type]->libelle_type;?></td>
                             <td>&nbsp;<?php print $ll->arrayLiens[$i]->title_page;?></td>
                         </tr>

@@ -18,6 +18,7 @@ if($enreg==1){
         $p->title_page = RecupVarForm('title_page_'.$i);
         $p->nom_fichier = RecupVarForm('nom_fichier_'.$i);
         $p->id_type = RecupVarForm('id_type_'.$i);
+		$p->main_page = RecupVarForm('main_page_'.$i);
         if($p->nom_fichier!=''){
             $p->SetPage();
         }
@@ -25,9 +26,12 @@ if($enreg==1){
 }
 $lp=new ListePages();
 $lp->GetListePages();
+$lp2=new ListePages();
+$lp2->GetListePages(0);
 $lt=new ListeType();
 $lt->GetListeType();
 $Apg = Obj2Array($lt->arrayCode,1,'libelle_type','',1);
+$Apg2 = Obj2Array($lp2->arrayPage,0,'title_page','id_page',0);
 CreationHead("Administraion V-1.0.0.0");
 ?>
 
@@ -54,6 +58,7 @@ CreationHead("Administraion V-1.0.0.0");
                                 <td>&nbsp;Titre de la Page</td>
                                 <td>&nbsp;Fichier</td>
                                 <td>&nbsp;Type</td>
+								<td>&nbsp;Page Parente</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -61,6 +66,7 @@ CreationHead("Administraion V-1.0.0.0");
                                 <td><?php AddTextbox('title_page_-1', '', 'onchange="MajChamp(this);"');?></td>
                                 <td><?php AddTextbox('nom_fichier_-1', '', 'onchange="MajChamp(this);"');?></td>
                                 <td><?php AddSelect("id_type_-1",$Apg,'','onchange="MajChamp(this);"',1,0,1); ?></td>
+								<td><?php AddSelect("main_page_-1",$Apg2,'','onchange="MajChamp(this);"',1,0,1); ?></td>
                             </tr>
                         </tbody>
                     </table>
@@ -87,6 +93,7 @@ CreationHead("Administraion V-1.0.0.0");
                             <td>&nbsp;Titre de la page</td>
                             <td>&nbsp;fichier</td>
                             <td>&nbsp;Type</td>
+							<td>&nbsp;Page Parente</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -96,10 +103,11 @@ CreationHead("Administraion V-1.0.0.0");
                             $page =&$lp->arrayPage[$i];
                         ?>
                         <tr>
-                            <td>&nbsp;<?php print $page->id_page;AddHidden('id_page_'.$i,$page->id_page);?></td>
-                            <td>&nbsp;<?php AddTextbox('title_page_'.$i, $page->title_page, 'onchange="MajChamp(this);"');?></td>
-                            <td>&nbsp;<?php AddTextbox('nom_fichier_'.$i, $page->nom_fichier, 'onchange="MajChamp(this);"');?></td>
-                            <td>&nbsp;<?php AddSelect("id_type_".$i,$Apg,$page->id_type,'onchange="MajChamp(this);"',1,0,1); ?></td>
+                            <td><?php print $page->id_page;AddHidden('id_page_'.$i,$page->id_page);?></td>
+                            <td><?php AddTextbox('title_page_'.$i, $page->title_page, 'onchange="MajChamp(this);"');?></td>
+                            <td><?php AddTextbox('nom_fichier_'.$i, $page->nom_fichier, 'onchange="MajChamp(this);"');?></td>
+                            <td><?php AddSelect("id_type_".$i,$Apg,$page->id_type,'onchange="MajChamp(this);"',1,0,1); ?></td>
+							<td><?php if($page->id_type!=0){ AddSelect("main_page_".$i,$Apg2,$page->main_page,'onchange="MajChamp(this);"',1,0,1); } else { print '&nbsp;';} ?></td>
                         </tr>
                         <?php
                         }

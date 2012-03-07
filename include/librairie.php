@@ -264,4 +264,15 @@ function SETTPL($type,$new_name){
     fwrite($a, $s);
     fclose($a);
 }
+
+function GetSQL($LO_conn,$sql,$champ){
+	$sql ="select id_template from template where active = 1 ";
+	$Ls_rs = F_executer_requete($LO_conn,$sql);
+	$tmp='';
+	if($champ!=''){
+		F_recuperer_ligne($Ls_rs);
+		$tmp = F_retourne_resultat($Ls_rs,'id_template');
+	}
+	return $tmp;
+}
 ?>
