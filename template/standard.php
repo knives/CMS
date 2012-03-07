@@ -20,7 +20,7 @@ if(!isset($Page)){
         <td colspan="2" style="width:100%;"><?php require_once '../CSS/'.$css_name.'/banniere.php'?></td>
     </tr>
     <tr>
-        <td valign="top" class="menu">
+        <td valign="top" class="tdmenu">
             <table cellpadding="0" cellspacing="0" width="100%">
                 <tr>
                     <td>

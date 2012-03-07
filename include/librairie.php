@@ -160,6 +160,7 @@ function CreationHead($title=""){
 	$css_name = F_retourne_resultat($Ls_rs,'nom_css');
 	F_close_connexion($LO_conn);
     ?>
+	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
     <head>
         <title><?php print $title;?></title>
         <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
