@@ -4,6 +4,6 @@ $GS_user="root";
 $GS_pwd="Rugby13";
 $GS_pwd="";
 $GS_dsn="localhost";
-$GS_debug="1";
+$GS_debug="0";
 $GS_database="rbclub";
 ?>
