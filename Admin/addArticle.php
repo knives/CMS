@@ -94,7 +94,7 @@ CreationHead("Administraion V-1.0.0.0");
 </body>
 <script>
     var editor = CKEDITOR.replace( 'text_r1',{
-        filebrowserBrowseUrl : 'filemanager/index.html'        
+        filebrowserBrowseUrl : '../filemanager/index.html'        
     });
 </script>
   
