@@ -11,16 +11,18 @@ $enreg = RecupVarForm('enreg');
 $nb_link = RecupVarForm("nb_link");
 if($enreg==1){
     for($i=-1;$i<$nb_link;$i++){
-        $link = new Liens();
-        $link->libelle_lien=RecupVarForm("libelle_lien_".$i);
-        $link->action_lien=RecupVarForm("action_lien_".$i);
-        $link->titre=RecupVarForm("titre_".$i,0);
-        $link->position=RecupVarForm("position_".$i);
-        if($i==-1 && $link->libelle_lien!='' && $link->action_lien!='' && $link->position!=''){
-            $link->AddLink();
-        } else if($i>-1){
-            $link->id_lien = RecupVarForm("id_lien_".$i);
-            $link->MajLink();
+        if(RecupVarForm('modif_ligne_'.$i)==1 || $i==-1){
+            $link = new Liens();
+            $link->libelle_lien=RecupVarForm("libelle_lien_".$i);
+            $link->action_lien=RecupVarForm("action_lien_".$i);
+            $link->titre=RecupVarForm("titre_".$i,0);
+            $link->position=RecupVarForm("position_".$i);
+            if($i==-1 && $link->libelle_lien!='' && $link->action_lien!='' && $link->position!=''){
+                $link->AddLink();
+            } else if($i>-1){
+                $link->id_lien = RecupVarForm("id_lien_".$i);
+                $link->MajLink();
+            }
         }
     }
 }
@@ -74,7 +76,7 @@ CreationHead("Administraion V-1.0.0.0");
         </table>
     </div>
     <img id='patienter_image' src='IMG/fond.png' style='position:absolute;-moz-opacity:0.3;opacity: 0.3;filter:alpha(opacity=30); z-index:1; display:none; '>
-    <table cellpadding="0" cellspacing="0" style="width:100%;">
+    <table cellpadding="0" cellspacing="0" style="width:100%;" id="Bloc">
         <tr>
             <td style="width:80%;" class="titre">Liste des Liens</td>
             <td style="width:20%;text-align:right;">
@@ -104,13 +106,13 @@ CreationHead("Administraion V-1.0.0.0");
                         for($i=0;$i<$ll->nbLiens;$i++){
                         ?>
                         <tr>
-                            <td>&nbsp;<?php AddHidden('id_lien_'.$i,$ll->arrayLiens[$i]->id_lien);print $ll->arrayLiens[$i]->id_lien;?></a></td>
-                            <td><?php AddTextbox('libelle_lien_'.$i,$ll->arrayLiens[$i]->libelle_lien,'onchange="MajChamp(this);"');?></td>
-                            <td><?php AddSelect("action_lien_".$i,$Apg,$ll->arrayLiens[$i]->action_lien,'onchange="MajChamp(this);"',1,0,1); ?></td>
+                            <td>&nbsp;<?php AddHidden('modif_ligne_'.$i,'0');AddHidden('id_lien_'.$i,$ll->arrayLiens[$i]->id_lien);print $ll->arrayLiens[$i]->id_lien;?></a></td>
+                            <td><?php AddTextbox('libelle_lien_'.$i,$ll->arrayLiens[$i]->libelle_lien,'onchange="MajChamp(this);document.getElementById(\'modif_ligne_'.$i.'\').value=1;"');?></td>
+                            <td><?php AddSelect("action_lien_".$i,$Apg,$ll->arrayLiens[$i]->action_lien,'onchange="MajChamp(this);document.getElementById(\'modif_ligne_'.$i.'\').value=1;"',1,0,1); ?></td>
                             <td><?php print $ll->arrayLiens[$i]->target;?></td>
                             <td>&nbsp;<?php print $ll->arrayLiens[$i]->method;?></td>
-                            <td><?php AddCheckbox('titre_'.$i, $ll->arrayLiens[$i]->titre,'onchange="MajChamp(this);"');?></td>
-                            <td><?php AddTextbox('position_'.$i,$ll->arrayLiens[$i]->position,'onchange="MajChamp(this);"');?></td>
+                            <td><?php AddCheckbox('titre_'.$i, $ll->arrayLiens[$i]->titre,'onchange="MajChamp(this);document.getElementById(\'modif_ligne_'.$i.'\').value=1;"');?></td>
+                            <td><?php AddTextbox('position_'.$i,$ll->arrayLiens[$i]->position,'onchange="MajChamp(this);document.getElementById(\'modif_ligne_'.$i.'\').value=1;"');?></td>
                             <td>&nbsp;<?php print $lt->arrayCode[$ll->arrayLiens[$i]->id_type]->libelle_type;?></td>
                             <td>&nbsp;<?php print $ll->arrayLiens[$i]->title_page;?></td>
                         </tr>
