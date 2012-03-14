@@ -57,7 +57,7 @@ CreationHead("Administraion V-1.0.0.0");
         </table>
     </div>
     <img id='patienter_image' src='IMG/fond.png' style='position:absolute;-moz-opacity:0.3;opacity: 0.3;filter:alpha(opacity=30); z-index:1; display:none; '>
-    <table cellpadding="0" cellspacing="0" style="width:100%;">
+    <table cellpadding="0" cellspacing="0" style="width:100%;" id="Bloc">
         <tr>
             <td style="width:80%;" class="titre">Liste des Articles</td>
             <td style="width:20%;text-align:right;"><a href="javascript:ParamArt(-1);" style="border:0;"><img src="IMG/Add.png" style="width:24px;height:24px;"></td>
@@ -93,8 +93,13 @@ CreationHead("Administraion V-1.0.0.0");
 </form>
 </body>
 <script>
-    var editor = CKEDITOR.replace( 'text_r1',{
-        filebrowserBrowseUrl : '../filemanager/index.html'        
-    });
+    var editor = CKEDITOR.replace( 'text_r1',
+        {
+            filebrowserBrowseUrl : 'filemanager/index.html',
+            stylesSet:[],
+            extraPlugins : 'stylesheetparser'
+            //contentsCss :'../CSS/<?php print $css_name;?>/<?php print $css_name;?>.css'
+       }
+    );
 </script>
   

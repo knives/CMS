@@ -164,7 +164,7 @@ function CreationHead($title=""){
     <head>
         <title><?php print $title;?></title>
         <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
-        <script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
+        <script type="text/javascript" src="../ckeditor/ckeditor.js?v=<?php print filemtime("../ckeditor/ckeditor.js");?>"></script>
         <script type="text/javascript" src="../include/librairie.js?v=<?php print filemtime('../include/librairie.js');?>"></script>    
         <?php
         GetCss();
@@ -196,7 +196,7 @@ function ScanDirectory($directory){
 function GetCss(){
 	global $css_name;
     ?>
-    <LINK rel="stylesheet" type="text/css" href="../CSS/<?php print $css_name;?>/<?php print $css_name;?>.css">
+    <LINK rel="stylesheet" type="text/css" href="../CSS/<?php print $css_name;?>/<?php print $css_name;?>.css?v=<?php print filemtime('../CSS/'.$css_name.'/'.$css_name.'.css');?>">
     <?php
 }
 function php2js( $php_array, $js_array_name ) {
