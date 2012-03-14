@@ -62,11 +62,16 @@ class Pages {
 				F_executer_requete($LO_conn, $sql);
             } else if ($this->id_type==1){
                 $type='MENU';
-				$sql = "update template_page set main_page=".$this->main_page.",position=(select position from template_position where id_type=1) where id_page=".$this->id_page;
+                $sql="delete from template_page where id_page=".$this->id_page;
 				F_executer_requete($LO_conn, $sql);
+                $sql="insert into template_page (id_template,id_page,position,main_page) values (".$id_template.",".$this->id_page.",(select position from template_position where id_type=1),".$this->main_page.")";
+                F_executer_requete($LO_conn, $sql);
             } else if ($this->id_type==4){
                 $type='ART';
-				$sql = "update template_page set main_page=".$this->main_page.",position=(select position from template_position where id_type=4) where id_page=".$this->id_page;
+                $sql="delete from template_page where id_page=".$this->id_page;
+				F_executer_requete($LO_conn, $sql);
+                $sql="insert into template_page (id_template,id_page,position,main_page) values (".$id_template.",".$this->id_page.",(select position from template_position where id_type=4),".$this->main_page.")";
+                F_executer_requete($LO_conn, $sql);
             }
             SETTPL($type, $this->nom_fichier);			
 			
