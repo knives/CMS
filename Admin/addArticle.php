@@ -97,8 +97,13 @@ CreationHead("Administraion V-1.0.0.0");
         {
             filebrowserBrowseUrl : 'filemanager/index.html',
             stylesSet:[],
+<<<<<<< HEAD
             extraPlugins : 'stylesheetparser'
             //contentsCss :'../CSS/<?php print $css_name;?>/<?php print $css_name;?>.css'
+=======
+            extraPlugins : 'stylesheetparser',
+            contentsCss :'../CSS/<?php print $css_name;?>/<?php print $css_name;?>.css'
+>>>>>>> 2cd0eab4bc39be1260279aaad9651a300a4c2303
        }
     );
 </script>

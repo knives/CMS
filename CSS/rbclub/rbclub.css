@@ -122,6 +122,22 @@ td.titre{
     text-align:center;
 
 }
+<<<<<<< HEAD
+=======
+.titre{
+        color:#FFFFFF;
+    background-color:#000000;
+    font-weight: normal;
+    text-shadow:2px 3px 0px #B9121A;
+    font-size: 30px;
+    text-transform: uppercase;
+    font-family: Impact; 
+    width:100%;
+    height:40px;
+    text-align:center;
+
+}
+>>>>>>> 2cd0eab4bc39be1260279aaad9651a300a4c2303
 
 #Bloc{
     background-color:#FFFFFF;

@@ -196,7 +196,11 @@ function ScanDirectory($directory){
 function GetCss(){
 	global $css_name;
     ?>
+<<<<<<< HEAD
     <LINK rel="stylesheet" type="text/css" href="../CSS/<?php print $css_name;?>/<?php print $css_name;?>.css?v=<?php print filemtime('../CSS/'.$css_name.'/'.$css_name.'.css');?>">
+=======
+    <LINK rel="stylesheet" type="text/css" href="../CSS/<?php print $css_name;?>/<?php print $css_name;?>.css?v=<?php print filemtime('../CSS/'.$css_name.'/'.$css_name.'css');?>">
+>>>>>>> 2cd0eab4bc39be1260279aaad9651a300a4c2303
     <?php
 }
 function php2js( $php_array, $js_array_name ) {
