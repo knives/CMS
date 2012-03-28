@@ -1,9 +1,15 @@
 <?php
-@session_start();
-@$session_sid = session_id();
+session_save_path(dirname(__FILE__).'../temp');
+if(!isset($_COOKIE['id_sess'])){
+	@session_start();
+	@$session_sid = session_id();
+	setcookie('id_sess', $session_sid, time() + 365*24*3600);
+} else {
+	@$session_sid = session_id($_COOKIE['id_sess']);
+	@session_start();
+}
 include_once dirname(__FILE__).'/../config/ini.php';
 date_default_timezone_set('Europe/Paris');
-$GS_erreur_reporting =1;
 define ("FATAL",E_USER_ERROR);
 define ("ERROR",E_USER_WARNING);
 define ("WARNING",E_USER_NOTICE);
