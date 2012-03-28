@@ -31,10 +31,12 @@ if(!isset($Page)){
                 </tr>
             </table>
         </td>
-        <td valign="top" class="page">
+        <td valign="top">
+            <div  class="page">
             <?php
             require_once $Page->position[1]['name'];
             ?>
+            </div>
         </td>
     </tr>
 </table>
