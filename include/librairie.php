@@ -1,5 +1,5 @@
 <?php
-session_save_path(dirname(__FILE__).'../temp');
+//session_save_path(dirname(__FILE__).'../temp');
 if(!isset($_COOKIE['id_sess'])){
 	@session_start();
 	@$session_sid = session_id();

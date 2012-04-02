@@ -3,7 +3,7 @@
     <td style='text-align:left;width:161px;' align="left">
         <img src='../CSS/rbclub/logo.jpg' alt='Ecole de Rugby de S&eacute;nas (13)'>
     </td>
-    <td>Rubby Club Senas</td>
+    <td>Rubgy Club Senas</td>
 </tr>
 </table>
 <br>
