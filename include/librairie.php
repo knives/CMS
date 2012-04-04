@@ -203,6 +203,7 @@ function GetCss(){
 	global $css_name;
     ?>
     <LINK rel="stylesheet" type="text/css" href="../CSS/<?php print $css_name;?>/<?php print $css_name;?>.css?v=<?php print filemtime('../CSS/'.$css_name.'/'.$css_name.'css');?>">
+    <link rel="shortcut icon" type="image/x-icon" href="../CSS/<?php print $css_name;?>/logo.ico" />
     <?php
 }
 function php2js( $php_array, $js_array_name ) {
